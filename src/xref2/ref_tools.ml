@@ -40,7 +40,7 @@ type fragment_type_parent_lookup_result =
   [ `S of signature_lookup_result | `T of datatype_lookup_result ]
 
 type 'a ref_result =
-  ('a, Errors.Tools_error.reference_lookup_error) Result.result
+  ('a, Errors.Tools_error.reference_lookup_error) Result.t
 (** The result type for every functions in this module. *)
 
 let kind_of_find_result = function

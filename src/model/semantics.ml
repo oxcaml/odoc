@@ -300,7 +300,7 @@ let tag :
     Ast.ocamldoc_tag ->
     ( Comment.block_element with_location,
       internal_tags_removed with_location )
-    Result.result =
+    Result.t =
  fun ~location status tag ->
   if not status.tags_allowed then
     (* Trigger a warning but do not remove the tag. Avoid turning tags into

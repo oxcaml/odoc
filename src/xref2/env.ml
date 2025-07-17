@@ -496,7 +496,7 @@ type 'a scope = {
   root : string -> t -> 'a option;
 }
 
-type 'a maybe_ambiguous = ('a, [ 'a amb_err | `Not_found ]) Result.result
+type 'a maybe_ambiguous = ('a, [ 'a amb_err | `Not_found ]) Result.t
 
 let make_scope ?(root = fun _ _ -> None) ?check
     (filter : _ -> ([< Component.Element.any ] as 'a) option) : 'a scope =
