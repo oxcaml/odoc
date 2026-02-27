@@ -148,8 +148,12 @@ let lookup_shape : Env.t -> Shape.t -> Identifier.SourceLocation.t option =
   result.uid >>= fun uid ->
 #else
   let module Reduce = Shape_reduce.Make(struct
-    let fuel = 10
-    let read_unit_shape ~unit_name =
+    let fuel () = Misc.Maybe_bounded.of_int 10
+    let fuel_for_compilation_units () = Misc.Maybe_bounded.Unbounded
+    let max_shape_reduce_steps_per_variable () = Misc.Maybe_bounded.Unbounded
+    let max_compilation_unit_depth () = Misc.Maybe_bounded.Unbounded
+    let projection_rules_for_merlin_enabled = true
+    let read_unit_shape ~diagnostics:_ ~unit_name =
       match Env.lookup_impl unit_name env with
       | Some impl -> (
           match impl.shape_info with
