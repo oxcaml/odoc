@@ -100,14 +100,14 @@ and aliasability : Types.Aliasability.t -> Aliasability.t = function
 and module_type : Types.module_type -> module_type = function
   | Types.Mty_ident p -> Mty_ident p
   | Types.Mty_signature s -> Mty_signature (signature s)
-  | Types.Mty_functor (a, b) -> Mty_functor(functor_parameter a, module_type b)
+  | Types.Mty_functor (a, b, _mm) -> Mty_functor(functor_parameter a, module_type b)
   | Types.Mty_alias p -> Mty_alias p
   | Types.Mty_strengthen (mty,p,a) ->
       Mty_strengthen (module_type mty, p, aliasability a)
 
 and functor_parameter : Types.functor_parameter -> functor_parameter = function
   | Types.Unit -> Unit
-  | Types.Named (a,b) -> Named (a, module_type b)
+  | Types.Named (a, b, _mm) -> Named (a, module_type b)
 
 and module_presence : Types.module_presence -> module_presence = function
   | Types.Mp_present -> Mp_present
