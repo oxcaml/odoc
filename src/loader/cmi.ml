@@ -651,7 +651,7 @@ let read_value_description ({ident_env ; warnings_tag} as env) parent id vd =
   let type_ = read_type_expr env vd.val_type in
   let value =
     match vd.val_kind with
-    | Val_reg -> Value.Abstract
+    | Val_reg _ -> Value.Abstract
     | Val_prim desc ->
         let primitives =
           let open Primitive in
