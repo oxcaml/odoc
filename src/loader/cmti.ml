@@ -171,6 +171,7 @@ let rec read_core_type env container ctyp =
 #endif
     | Ttyp_call_pos -> Constr(Env.Path.read_type env.ident_env Predef.path_lexing_position, [])
     | Ttyp_of_kind _ -> assert false
+    | Ttyp_quote ty | Ttyp_splice ty -> read_core_type env container ty
 
 let read_value_description env parent vd =
   let open Signature in

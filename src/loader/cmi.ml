@@ -287,6 +287,7 @@ let mark_type ty =
       | Tsubst (ty,_) -> loop visited ty
 #endif
       | Tlink _ -> assert false
+      | Tquote ty | Tsplice ty -> loop visited ty
       | Tof_kind _ -> ()
   in
   loop [] ty
@@ -525,6 +526,7 @@ let rec read_type_expr env typ =
       | Tsubst (typ,_) -> read_type_expr env typ
 #endif
       | Tlink _ -> assert false
+      | Tquote typ | Tsplice typ -> read_type_expr env typ
       | Tof_kind _ -> assert false
     in
       match alias with
