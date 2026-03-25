@@ -78,7 +78,7 @@ module Env = struct
     match mty.mty_desc with
     | Tmty_signature sg -> signature env (parent : Identifier.Signature.t) sg
     | Tmty_with (mty, _) -> module_type env parent mty
-    | Tmty_functor (_, t) -> module_type env parent t
+    | Tmty_functor (_, t, _) -> module_type env parent t
     | Tmty_strengthen (t, _, _) -> module_type env parent t
     | Tmty_ident _ | Tmty_alias _ | Tmty_typeof _ -> ()
 
@@ -108,7 +108,7 @@ module Env = struct
         let env =
           match parameter with
           | Unit -> env
-          | Named (id_opt, _, arg) -> (
+          | Named (id_opt, _, arg, _) -> (
               match id_opt with
               | Some id ->
                   let env =
@@ -125,7 +125,7 @@ module Env = struct
         let () =
           match constr with
           | Tmodtype_implicit -> ()
-          | Tmodtype_explicit mt -> module_type env parent mt
+          | Tmodtype_explicit (mt, _mm) -> module_type env parent mt
         in
         module_expr env parent me
     | _ -> ()

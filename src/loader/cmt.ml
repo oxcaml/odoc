@@ -392,7 +392,7 @@ let rec read_module_expr env parent label_parent mexpr =
         let f_parameter, env =
           match parameter with
           | Unit -> FunctorParameter.Unit, env
-          | Named (id_opt, _, arg) ->
+          | Named (id_opt, _, arg, _) ->
               let id, env =
                 match id_opt with
                 | None -> Identifier.Mk.parameter (parent, Odoc_model.Names.ModuleName.make_std "_"), env
@@ -426,7 +426,7 @@ let rec read_module_expr env parent label_parent mexpr =
     | Tmod_apply_unit _ ->
         Cmi.read_module_type env parent (Odoc_model.Compat.module_type mexpr.mod_type)
 #endif
-    | Tmod_constraint(_, _, Tmodtype_explicit mty, _) ->
+    | Tmod_constraint(_, _, Tmodtype_explicit (mty, _), _) ->
         Cmti.read_module_type env parent label_parent mty
     | Tmod_constraint(mexpr, _, Tmodtype_implicit, _) ->
         read_module_expr env parent label_parent mexpr

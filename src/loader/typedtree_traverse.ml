@@ -13,7 +13,7 @@ module Analysis = struct
     if exp_loc.loc_ghost then ()
     else
       match expr.exp_desc with
-      | Texp_ident (p, _, _, _, _) -> poses := (Value p, exp_loc) :: !poses
+      | Texp_ident (p, _, _, _, _, _) -> poses := (Value p, exp_loc) :: !poses
       | _ -> ()
 
   let pat env (type a) poses : a Typedtree.general_pattern -> unit = function
