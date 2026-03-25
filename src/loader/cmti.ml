@@ -47,7 +47,7 @@ let rec read_core_type env container ctyp =
        eventually *)
     | Ttyp_var (None, _layout) -> Any
     | Ttyp_var (Some s, _layout) -> Var s
-    | Ttyp_arrow(lbl, arg, res) ->
+    | Ttyp_arrow(lbl, arg, _mm_arg, res, _mm_res) ->
         let lbl = read_label lbl in
 #if OCAML_VERSION < (4,3,0)
         (* NOTE(@ostera): Unbox the optional value for this optional labelled
@@ -566,11 +566,11 @@ and read_module_type env parent label_parent mty =
         let sg, () = read_signature Odoc_model.Semantics.Expect_none env parent sg in
         Signature sg
 #if OCAML_VERSION >= (4,10,0)
-    | Tmty_functor(parameter, res) ->
+    | Tmty_functor(parameter, res, _) ->
         let f_parameter, env =
           match parameter with
           | Unit -> FunctorParameter.Unit, env
-          | Named (id_opt, _, arg) ->
+          | Named (id_opt, _, arg, _) ->
             let id, env =
               match id_opt with
               | None -> Identifier.Mk.parameter (parent, ModuleName.make_std "_"), env
