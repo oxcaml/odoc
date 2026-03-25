@@ -1,3 +1,15 @@
+#syntax quotations off
+
+(* CR-someday lmaurer: We should put ($) back into Cmdliner and then this can go away. *)
+module Cmdliner = struct
+  include Cmdliner
+
+  module Term = struct
+    include Term
+    let ($) = ($$)
+  end
+end
+
 (* CR-someday trefis: the "deps" and "targets" subcommands currently output
    their result on stdout.
    It would make the interaction with jenga nicer if we could specify a file to

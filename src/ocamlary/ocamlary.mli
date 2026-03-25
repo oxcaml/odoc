@@ -1,3 +1,5 @@
+#syntax quotations off
+
 (*
  * Copyright (c) 2014 David Sheets <sheets@alum.mit.edu>
  *                    Leo White <lpw25@cl.cam.ac.uk>

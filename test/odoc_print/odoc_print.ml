@@ -1,3 +1,15 @@
+#syntax quotations off
+
+(* CR-someday lmaurer: We should put ($) back into Cmdliner and then this can go away. *)
+module Cmdliner = struct
+  include Cmdliner
+
+  module Term = struct
+    include Term
+    let ($) = ($$)
+  end
+end
+
 (** Print .odocl files. *)
 
 open Odoc_odoc
