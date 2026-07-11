@@ -66,7 +66,6 @@ let tag_of_token (tok : Parser.token) =
   | INHERIT -> "INHERIT"
   | INITIALIZER -> "INITIALIZER"
   | INT _ -> "INT"
-  | KIND_ABBREV -> "KIND_ABBREV"
   | KIND_OF -> "KIND_OF"
   | LABEL _ -> "LABEL"
   | LAZY -> "LAZY"
@@ -101,7 +100,6 @@ let tag_of_token (tok : Parser.token) =
   | NONREC -> "NONREC"
   | OBJECT -> "OBJECT"
   | OF -> "OF"
-  | ONCE -> "ONCE"
   | OPEN -> "OPEN"
   | OPTLABEL _ -> "OPTLABEL"
   | OR -> "OR"
@@ -133,7 +131,6 @@ let tag_of_token (tok : Parser.token) =
   | TYPE -> "TYPE"
   | UIDENT _ -> "UIDENT"
   | UNDERSCORE -> "UNDERSCORE"
-  | UNIQUE -> "UNIQUE"
   | VAL -> "VAL"
   | VIRTUAL -> "VIRTUAL"
   | WHEN -> "WHEN"
@@ -141,13 +138,8 @@ let tag_of_token (tok : Parser.token) =
   | WITH -> "WITH"
 (* Removed *)
 #if OCAML_VERSION <= (4,2,3)
-  | INT32 _ -> "INT32"
-  | INT64 _ -> "INT64"
-  | NATIVEINT _ -> "NATIVEINT"
 #endif
 #if OCAML_VERSION <= (4,3,0)
-  | SHARP -> "SHARP"
-  | SHARPOP _ -> "SHARPOP"
 #endif
 (* Added *)
 #if OCAML_VERSION >= (4,4,0)
@@ -166,10 +158,6 @@ let tag_of_token (tok : Parser.token) =
   | LETOP _ -> "LETOP"
 #endif
 #if OCAML_VERSION >= (5,3,0)
-  | METAOCAML_ESCAPE -> "METAOCAML_ESCAPE"
-  | METAOCAML_BRACKET_OPEN -> "METAOCAML_BRACKET_OPEN"
-  | METAOCAML_BRACKET_CLOSE -> "METAOCAML_BRACKET_CLOSE"
-  | EFFECT -> "EFFECT"
 #endif
 
 let syntax_highlighting_locs src =

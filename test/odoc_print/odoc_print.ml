@@ -4,10 +4,7 @@
 module Cmdliner = struct
   include Cmdliner
 
-  module Term = struct
-    include Term
-    let ($) = ($$)
-  end
+  module Term = Term
 end
 
 (** Print .odocl files. *)

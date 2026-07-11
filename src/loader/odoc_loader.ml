@@ -226,7 +226,7 @@ let read_cmi ~make_root ~parent ~filename ~warnings_tag () =
       let name = name |> Compilation_unit.Name.to_string in
       let id, sg =
         Cmi.read_interface parent name ~warnings_tag
-          (Odoc_model.Compat.signature cmi_info.cmi_sign)
+          (Odoc_model.Compat.signature (fst cmi_info.cmi_sign))
       in
       let imports =
         imports
